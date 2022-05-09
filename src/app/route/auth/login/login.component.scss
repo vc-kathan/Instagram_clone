@@ -1,0 +1,44 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    padding: 15px;
+}
+
+h4 {
+    margin: 0px 5px;
+}
+
+.link {
+    text-decoration: none;
+    color: #000000;
+}
+
+.pink {
+    color: #FF4081;
+}
+
+.space-top {
+    margin-top: 20px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #000;
+    z-index: 999;
+    opacity: 0.8;
+}
+
+// --------mat css------------
+.example-form {
+    font-size: small;
+}
+
+.example-full-width {
+    width: 100%;
+    min-width: 300px;
+}

@@ -1,1 +1,79 @@
-<p>register works!</p>
+<div class="container" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="loading" fxLayout="row" fxLayoutAlign="center center" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="card" fxLayout="column" flFlex="100" fxLayoutAlign="space-around center">
+        <h1><b>Register User</b></h1>
+        <form class="example-form" [formGroup]="registerForm" (ngSubmit)="Registeruser()" fxLayout="column" flFlex="100">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" placeholder="xyz@gmail.in" formControlName="email">
+                <mat-error *ngIf="email?.touched || email?.dirty">
+                    <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+                    <mat-error *ngIf="!email?.errors?.['required'] && email?.errors?.['email']">Enter valid email</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" placeholder="name" formControlName="name">
+                <mat-error *ngIf="name?.touched || name?.dirty">
+                    <mat-error *ngIf="name?.errors?.['required']">Name is required</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Age</mat-label>
+                <input matInput type="text" formControlName="age">
+                <mat-error *ngIf="age?.touched || age?.dirty">
+                    <mat-error *ngIf="age?.errors?.['required']">Name is required</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="text" formControlName="phoneNumber">
+                <mat-error *ngIf="phoneNumber?.touched || phoneNumber?.dirty">
+                    <mat-error *ngIf="phoneNumber?.errors?.['required']">phone number is required</mat-error>
+                    <mat-error *ngIf="!phoneNumber?.errors?.['required'] && phoneNumber?.errors?.['minlength']">must have 10 number</mat-error>
+                    <mat-error *ngIf="!phoneNumber?.errors?.['required'] && phoneNumber?.errors?.['maxlength']">number should less than 10</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password?.touched || password?.dirty">
+                    <mat-error *ngIf="password?.errors?.['required']">password is required</mat-error>
+                    <mat-error *ngIf="!password?.errors?.['required'] && password?.errors?.['minlength']">must have 8 letters</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="chide ? 'password' : 'text'" formControlName="ConfirmPassword">
+                <button mat-icon-button matSuffix (click)="chide = !chide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="chide">
+                  <mat-icon>{{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                <mat-error *ngIf="ConfirmPassword?.touched || ConfirmPassword?.dirty">
+                    <mat-error *ngIf="ConfirmPassword?.errors?.['required']">ConfirmPassword is required</mat-error>
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout="column">
+                <!-- <mat-form-field class="example-full-width" appearance="outline"> -->
+
+                <mat-label>Chooose your profile pic</mat-label>
+                <input type="file" mat-flat-button formControlName="file" (change)="onFileChange($event)">
+                <!-- </mat-form-field> -->
+            </div>
+            <button mat-flat-button color="accent" type="submit" class="example-full-width mb-15 space-top">Register User</button>
+        </form>
+        <a [routerLink]="['/auth/login']" class="link space-top">Already have an account? <b class="pink">Sign In</b></a>
+    </div>
+</div>
