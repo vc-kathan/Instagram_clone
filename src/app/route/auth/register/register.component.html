@@ -11,7 +11,7 @@
                 <input matInput type="text" placeholder="xyz@gmail.in" formControlName="email">
                 <mat-error *ngIf="email?.touched || email?.dirty">
                     <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
-                    <mat-error *ngIf="!email?.errors?.['required'] && email?.errors?.['email']">Enter valid email</mat-error>
+                    <mat-error *ngIf="!email?.errors?.['required'] && email?.errors?.['pattern']">Enter valid email</mat-error>
                 </mat-error>
             </mat-form-field>
 
@@ -25,7 +25,7 @@
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Age</mat-label>
-                <input matInput type="text" formControlName="age">
+                <input matInput type="text" formControlName="age" (keydown)="NumberValid($event)">
                 <mat-error *ngIf="age?.touched || age?.dirty">
                     <mat-error *ngIf="age?.errors?.['required']">Name is required</mat-error>
                 </mat-error>
@@ -33,15 +33,13 @@
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Phone Number</mat-label>
-                <input matInput type="text" formControlName="phoneNumber">
+                <input matInput type="text" formControlName="phoneNumber" (keydown)="NumberValid($event)">
                 <mat-error *ngIf="phoneNumber?.touched || phoneNumber?.dirty">
                     <mat-error *ngIf="phoneNumber?.errors?.['required']">phone number is required</mat-error>
                     <mat-error *ngIf="!phoneNumber?.errors?.['required'] && phoneNumber?.errors?.['minlength']">must have 10 number</mat-error>
                     <mat-error *ngIf="!phoneNumber?.errors?.['required'] && phoneNumber?.errors?.['maxlength']">number should less than 10</mat-error>
                 </mat-error>
             </mat-form-field>
-
-
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Password</mat-label>
@@ -63,6 +61,7 @@
               </button>
                 <mat-error *ngIf="ConfirmPassword?.touched || ConfirmPassword?.dirty">
                     <mat-error *ngIf="ConfirmPassword?.errors?.['required']">ConfirmPassword is required</mat-error>
+                    <mat-error *ngIf="!ConfirmPassword?.errors?.['required'] && ConfirmPassword?.errors?.['confirmedValidator']">password not match</mat-error>
                 </mat-error>
             </mat-form-field>
             <div fxLayout="column">
