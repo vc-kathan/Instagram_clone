@@ -15,8 +15,17 @@ export class AuthService {
     return of("sucessssssss")
   }
 
-  RegisterUser(data: any) {
+  registerUser(data: any) {
     return this.http.post<any>("signup", data)
     // return of("sucessssssss")
+  }
+
+  forgotpassword(data: any) {
+    // return this.http.post<any>("forgotpassword", data)
+    return of("sucessssssss")
+  }
+  resetpassword(pass: any) {
+    // return this.http.post<any>("forgotpassword", pass)
+    return of("sucessssssss")
   }
 }

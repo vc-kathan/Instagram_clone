@@ -31,7 +31,7 @@ h4 {
     background: #000;
     z-index: 999;
     opacity: 0.8;
-    pointer-events: visible;
+    // pointer-events: none;
 }
 
 input[type="file"]::file-selector-button {

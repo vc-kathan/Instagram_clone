@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UrlRewriteInterceptor } from './core/interceptor/Url-Rewrite.interceptor';
+import { UrlRewriteInterceptor } from './core/interceptor/url-rewrite.interceptor';
+import { ErrorInterceptor } from './core/interceptor/error.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,11 @@ import { UrlRewriteInterceptor } from './core/interceptor/Url-Rewrite.intercepto
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UrlRewriteInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

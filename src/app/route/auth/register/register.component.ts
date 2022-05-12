@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmedValidator } from 'src/app/core/validator/confirmed.validator';
+import { TosterService } from 'src/app/core/services/toster.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   constructor(
     private _auth: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _toster: TosterService
   ) { }
 
   ngOnInit(): void {
@@ -51,12 +53,11 @@ export class RegisterComponent implements OnInit {
       // formData.forEach((val, key) => {
       //   console.log(key, "=>", val);
       // })
-      this._auth.RegisterUser(formData).subscribe({
+      this._auth.registerUser(formData).subscribe({
         next: (res) => {
-          console.log(res);
+          this._toster.displaySnackBar(res.message, 'success')
           this.loading = false;
         }, error: (err) => {
-          console.log(err);
           this.loading = false;
         }
       })
