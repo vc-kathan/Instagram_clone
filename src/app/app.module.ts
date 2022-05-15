@@ -8,17 +8,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UrlRewriteInterceptor } from './core/interceptor/url-rewrite.interceptor';
 import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    LayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UrlRewriteInterceptor, multi: true },

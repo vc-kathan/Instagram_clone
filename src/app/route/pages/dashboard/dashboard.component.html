@@ -1,0 +1,31 @@
+<div>
+    <ng-container *ngFor="let item of data">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                <img mat-card-avatar src={{item.img}} alt="Photo of a Shiba Inu">
+                <mat-card-title>{{item.title}}</mat-card-title>
+                <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{item.img}} alt="Photo of a Shiba Inu" class="custom_margin" (dblclick)="likedislike(item.title)">
+            <mat-card-actions class="custom_padding custom_margin">
+                <button mat-icon-button aria-label="Example icon-button with account icon" (click)="likedislike(item.title)" *ngIf="item.like == false">
+                  <mat-icon>favorite_border</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Example icon-button with account icon" class="red" (click)="likedislike(item.title)" *ngIf="item.like == true">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Example icon-button with account icon">
+                  <mat-icon>chat_bubble_outline</mat-icon>
+                </button>
+                <button mat-icon-button class="rotate" aria-label="Example icon-button with account icon">
+                  <mat-icon>details</mat-icon>
+                </button>
+            </mat-card-actions>
+            <mat-card-content>
+                <p class="font custom_margin">132 {{item.totalLikes}}</p>
+                <p><span class="font custom_margin">{{item.title}}</span>{{item.detail}}</p>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</div>

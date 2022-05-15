@@ -1,0 +1,29 @@
+.example-card {
+    max-width: -webkit-fill-available;
+    margin-bottom: 15px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.custom_padding {
+    padding: 0;
+}
+
+.custom_margin {
+    margin-bottom: 5px;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.font {
+    font-weight: 500;
+}
+
+.red {
+    color: red;
+}
